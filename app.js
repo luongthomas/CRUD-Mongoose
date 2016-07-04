@@ -8,6 +8,7 @@ var hbs = require('express-handlebars');
 var http = require('http');
 var routes = require('./routes/index');
 var debug = require('debug')('05-express-first-app:server');
+var mongoose = require('mongoose');
 
 var app = express();
 
