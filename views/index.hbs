@@ -1,0 +1,107 @@
+{{!-- Index will be inserted into the body hook in the default layout.hbs --}}
+<h1>MONGODB - EXERCISE</h1>
+<div class="container">
+    <div class ="row">
+        <section class="insert col-lg-3 col-md-3 col-sm-6 col-sm-6">
+            <h3>Insert Data</h3>
+            <form action="/insert" method="post">
+                <div class="input">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="input">
+                    <label for="color">Color</label>
+                    <input type="color" name="color" value="#ff0000">
+                </div>
+                <div class="input">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(XXX)-XXX-XXXX">
+                </div>
+                <div class="input">
+                    <label for="gender">Gender</label>
+                    <input type="radio" name="gender" value="1"> Male<br>
+                    <input type="radio" name="gender" value="0"> Female<br>
+                </div>
+                <div class="input">
+                    <label for="birthday">Birthday</label>
+                    <input type="date" name="birthday">
+                </div>
+                <br>
+                <button type="submit">INSERT</button>
+            </form>
+        </section>
+        <section class="get col-lg-3 col-md-3 col-sm-6 col-sm-6">
+            <h3>Get Data</h3>
+            <a href="/get-data">LOAD DATA</a>
+            <div>
+                {{# each items }}
+                    <article class="item">
+                        <div><span>Name:</span> {{ this.name }}</div>
+                        <div>Color: {{ this.color }}</div>
+                        <div>Phone Number: {{ this.phone }}</div>
+                        <div>Gender: {{ this.male }}</div>
+                        <div>Birthday: {{ this.birthday }}</div>
+                        <div>ID: {{ this._id }}</div>
+
+                        <div id="{{this._id}}">
+                            <div class="id" style="display: none;">{{this._id}}</div>
+                            <div class="name" style="display: none;">{{this.name}}</div>
+                            <div class="color" style="display: none;">{{this.color}}</div>
+                            <div class="phone" style="display: none;">{{this.phone}}</div>
+                            <div class="male" style="display: none;">{{this.male}}</div>
+                            <div class="birthday" style="display: none;">{{this.birthday}}</div>
+                            <button type="button" onclick="fillInfo('{{this._id}}')">Edit</button>
+                        </div>
+
+                    </article>
+                {{/each}}
+            </div>
+        </section>
+        <section class="update col-lg-3 col-md-3 col-sm-6 col-sm-6">
+            <h3>Update Data</h3>
+            <form action="/update" method="post">
+                <div class="input">
+                    <label for="id">ID</label>
+                    <input type="text" id="updateId" name="id">
+                </div>
+                <div class="input">
+                    <label for="name">Name</label>
+                    <input type="text" id="updateName" name="name">
+                </div>
+                <div class="input">
+                    <label for="color">Color</label>
+                    <input type="color" name="updateColor" value="#ff0000">
+                </div>
+                <div class="input">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="updatePhone" name="phone" placeholder="(XXX)-XXX-XXXX">
+                </div>
+                <div class="input">
+                    <label for="gender">Gender</label>
+                    <input type="radio" name="updateGender" value="1"> Male<br>
+                    <input type="radio" name="updateGender" value="0"> Female<br>
+                </div>
+                <div class="input">
+                    <label for="birthday">Birthday</label>
+                    <input type="date" name="updateBirthday">
+                </div>
+                <br>
+                <button type="submit">UPDATE</button>
+
+            </form>
+        </section>
+        </section>
+        <div class="clearfix visible-lg-block visible-md-block visible-sm-block"></div>
+        <section class="delete col-lg-3 col-md-3 col-sm-6 col-sm-6">
+            <h3>Delete Data</h3>
+            <form action="/delete" method="post">
+                <div class="input">
+                    <label for="id">ID</label>
+                    <input type="text" id="id" name="id">
+                </div>
+                <br>
+                <button type="submit">DELETE</button>
+            </form>
+        </section>
+    </div>
+</div>
