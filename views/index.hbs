@@ -57,7 +57,8 @@
                             <div class="gender" style="display: none;">{{this.gender}}</div>
                             <div class="number" style="display: none;">{{this.number}}</div>
                             <div class="vehicle" style="display: none;">{{this.vehicle}}</div>
-                            <button type="button" onclick="fillInfo('{{this._id}}')">Edit</button>
+                            <button type="button" class="editBtn hiddenBtn btn btn-info btn-xs" onclick="fillInfo('{{this._id}}')">Edit</button>
+                            <button type="button" class="editBtn hiddenBtn btn btn-warning btn-xs" onclick="fillDel('{{this._id}}')">Del</button>
                         </div>
 
                     </article>
@@ -66,6 +67,8 @@
         </section>
         <section class="update col-lg-3 col-md-3 col-sm-6 col-sm-6">
             <h3>Update Data</h3>
+            <br>
+            <button type="button" class="btn btn-default btn-md" onclick="toggleBtn()">Enable Edits</button>
             <form action="/update" method="post">
                 <div class="input">
                     <label for="id">ID</label>
@@ -109,7 +112,7 @@
             <form action="/delete" method="post">
                 <div class="input">
                     <label for="id">ID</label>
-                    <input type="text" id="id" name="id">
+                    <input type="text" id="deleteId" name="id">
                 </div>
                 <br>
                 <button type="submit">DELETE</button>

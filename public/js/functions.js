@@ -7,10 +7,23 @@
 // 	alert("hello world! I am " + id);
 // }
 
+$( document ).ready(function() {
+    console.log( "ready!" );
+    toggleBtn();
+});
 
-// function fillID(id) {
-// 	document.getElementById("id").value = id;
-// }
+function fillDel(id) {
+	document.getElementById("deleteId").value = id;
+}
+
+
+
+
+function toggleBtn() {
+    $( ".hiddenBtn" ).toggle();
+};
+
+
 
 
 // Bug with chrome where pressing on too many edits will not actually check the box
