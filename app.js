@@ -29,13 +29,14 @@ process.env.MONGOHQ_URL ||
  */
 
 var port = process.env.PORT || 5000;
+
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = http.createServer(app).listen(process.env.PORT || 5000);
 
 
 
