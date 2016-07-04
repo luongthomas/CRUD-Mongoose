@@ -66,7 +66,7 @@ app.use(function(err, req, res, next) {
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = process.env.PORT || 5000;
 app.set('port', port);
 
 /**
@@ -79,7 +79,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-app.listen(port || 3000, function(){
+app.listen(port || 5000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 server.on('error', onError);

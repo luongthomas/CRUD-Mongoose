@@ -59,7 +59,7 @@ router.post('/insert', function(req, res, next) {
   };
 
   var data = new UserData(item);
-  data.save();
+  data.save(function (err) {if (err) console.log ('Error on save!')});
 
   res.redirect('/');
 });
@@ -99,7 +99,7 @@ router.post('/update', function(req, res, next) {
     doc.phone = req.body.phone,
     doc.male = req.body.male,
     doc.birthday = req.body.birthday
-    doc.save();
+    doc.save(function (err) {if (err) console.log ('Error on save!')});
   })
   res.redirect('/');
 });
