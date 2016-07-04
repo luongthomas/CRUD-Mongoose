@@ -19,12 +19,17 @@
                 </div>
                 <div class="input">
                     <label for="gender">Gender</label>
-                    <input type="radio" name="gender" value="1"> Male<br>
-                    <input type="radio" name="gender" value="0"> Female<br>
+                    <input type="radio" name="gender" value="Male"> Male<br>
+                    <input type="radio" name="gender" value="Female"> Female<br>
                 </div>
                 <div class="input">
-                    <label for="birthday">Birthday</label>
-                    <input type="date" name="birthday">
+                    <label for="vehicle">Vehicle</label>
+                    <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
+                    <input type="checkbox" name="vehicle" value="Car"> I have a car<br>
+                </div>
+                <div class="input">
+                    <label for="number">Lucky Number</label>
+                    <input type="number" name="number" min="1" max="100">
                 </div>
                 <br>
                 <button type="submit">INSERT</button>
@@ -39,8 +44,9 @@
                         <div><span>Name:</span> {{ this.name }}</div>
                         <div>Color: {{ this.color }}</div>
                         <div>Phone Number: {{ this.phone }}</div>
-                        <div>Gender: {{ this.male }}</div>
-                        <div>Birthday: {{ this.birthday }}</div>
+                        <div>Gender: {{ this.gender }}</div>
+                        <div>Number: {{ this.number }}</div>
+                        <div>Vehicle: {{ this.vehicle }}</div>
                         <div>ID: {{ this._id }}</div>
 
                         <div id="{{this._id}}">
@@ -48,8 +54,9 @@
                             <div class="name" style="display: none;">{{this.name}}</div>
                             <div class="color" style="display: none;">{{this.color}}</div>
                             <div class="phone" style="display: none;">{{this.phone}}</div>
-                            <div class="male" style="display: none;">{{this.male}}</div>
-                            <div class="birthday" style="display: none;">{{this.birthday}}</div>
+                            <div class="gender" style="display: none;">{{this.gender}}</div>
+                            <div class="number" style="display: none;">{{this.number}}</div>
+                            <div class="vehicle" style="display: none;">{{this.vehicle}}</div>
                             <button type="button" onclick="fillInfo('{{this._id}}')">Edit</button>
                         </div>
 
@@ -70,7 +77,7 @@
                 </div>
                 <div class="input">
                     <label for="color">Color</label>
-                    <input type="color" name="updateColor" value="#ff0000">
+                    <input type="color" name="color" id="updateColor" value="#ff0000">
                 </div>
                 <div class="input">
                     <label for="phone">Phone Number</label>
@@ -78,12 +85,17 @@
                 </div>
                 <div class="input">
                     <label for="gender">Gender</label>
-                    <input type="radio" name="updateGender" value="1"> Male<br>
-                    <input type="radio" name="updateGender" value="0"> Female<br>
+                    <input type="radio" name="gender" id="updateMale" value="Male"> Male<br>
+                    <input type="radio" name="gender" id="updateFemale" value="Female"> Female<br>
                 </div>
                 <div class="input">
-                    <label for="birthday">Birthday</label>
-                    <input type="date" name="updateBirthday">
+                    <label for="vehicle">Vehicle</label>
+                    <input type="checkbox" name="vehicle" id="updateBike" value="Bike"> I have a bike<br>
+                    <input type="checkbox" name="vehicle" id="updateCar" value="Car"> I have a car<br>
+                </div>
+                <div class="input">
+                    <label for="number">Lucky Number</label>
+                    <input type="number" name="number" min="1" id="updateNumber" max="100">
                 </div>
                 <br>
                 <button type="submit">UPDATE</button>

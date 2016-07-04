@@ -13,8 +13,9 @@ var userDataSchema = new Schema({
   name: {type: String, required: true},
   color: String,
   phone: String,
-  male: Boolean,
-  birthday: Date
+  gender: String,
+  number: {type: Number, min: 1, max: 100},
+  vehicle: String
 }, {collection: 'user-data'});
 
 // The table itself using the blueprint model above
@@ -23,6 +24,7 @@ var UserData = mongoose.model('UserData', userDataSchema);
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index');
+  
 });
 
 router.get('/get-data', function(req, res, next) {
@@ -38,39 +40,21 @@ router.post('/insert', function(req, res, next) {
     name: req.body.name,
     color: req.body.color,
     phone: req.body.phone,
-    male: req.body.male,
-    birthday: req.body.birthday
+    gender: req.body.gender,
+    number: req.body.number,
+    vehicle: req.body.vehicle
     
   };
 
   var data = new UserData(item);
   data.save(function (err) {if (err) console.log ('Error on save!')});
 
-  res.redirect('/');
+  res.redirect('/get-data');
 });
 
 
-// // Fills the update form with text from div with edit button clicked
-// router.post('/fill', function(req, res, next) {
-//   var id = req.body.id;
-
-//   UserData.findById(id, function(err, doc) {
-//       if (err) {
-//         console.error('error, no entry found');
-//       }
-//       var edit = {
-//         title: req.body.title,
-//         content: req.body.content,
-//         author: req.body.author
-//       };
-//           }).then(function() {
-//             res.render('index', edit);
-//   });
-
 
  
-// });
-
 
 router.post('/update', function(req, res, next) {
   var id = req.body.id;
@@ -82,11 +66,12 @@ router.post('/update', function(req, res, next) {
     doc.name = req.body.name,
     doc.color = req.body.color,
     doc.phone = req.body.phone,
-    doc.male = req.body.male,
-    doc.birthday = req.body.birthday
+    doc.gender = req.body.gender,
+    doc.number = req.body.number,
+    doc.vehicle = req.body.vehicle,
     doc.save(function (err) {if (err) console.log ('Error on save!')});
   })
-  res.redirect('/');
+  res.redirect('/get-data');
 });
 
 
@@ -94,7 +79,7 @@ router.post('/update', function(req, res, next) {
 router.post('/delete', function(req, res, next) {
   var id = req.body.id;
   UserData.findByIdAndRemove(id).exec();
-  res.redirect('/');
+  res.redirect('/get-data');
 });
 
 module.exports = router;
