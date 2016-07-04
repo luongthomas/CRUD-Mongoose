@@ -8,7 +8,7 @@ var uristring =
 process.env.MONGOLAB_URI ||
 process.env.MONGOHQ_URL ||
 'mongodb://localhost/HelloMongoose';
-
+console.log(uristring);
 
 // Makes connection asynchronously.  Mongoose will queue up database
 // operations and release them when the connection is complete.
