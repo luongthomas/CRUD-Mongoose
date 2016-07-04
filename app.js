@@ -13,6 +13,43 @@ var app = express();
 
 
 
+// Here we find an appropriate database to connect to, defaulting to
+// localhost if we don't find one.
+var uristring =
+process.env.MONGOLAB_URI ||
+process.env.MONGODB_URI ||
+process.env.MONGOHQ_URL ||
+'mongodb://localhost/HelloMongoose';
+
+
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = process.env.PORT || 5000;
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+
+
+// Makes connection asynchronously.  Mongoose will queue up database
+// operations and release them when the connection is complete.
+mongoose.connect(uristring, function (err, res) {
+  if (err) {
+  console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+  } else {
+  console.log ('Succeeded connected to: ' + uristring);
+  }
+});
+
+
+
 
 
 
@@ -62,28 +99,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-/**
- * Get port from environment and store in Express.
- */
-
-var port = process.env.PORT || 5000;
-app.set('port', port);
-
-/**
- * Create HTTP server.
- */
-
-var server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-app.listen(port || 5000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
-server.on('error', onError);
-server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.

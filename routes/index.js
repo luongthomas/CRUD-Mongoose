@@ -2,29 +2,13 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 
-// Here we find an appropriate database to connect to, defaulting to
-// localhost if we don't find one.
-var uristring =
-process.env.MONGOLAB_URI ||
-process.env.MONGOHQ_URL ||
-'mongodb://localhost/HelloMongoose';
-console.log(uristring);
 
-// Makes connection asynchronously.  Mongoose will queue up database
-// operations and release them when the connection is complete.
-mongoose.connect(uristring, function (err, res) {
-  if (err) {
-  console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-  } else {
-  console.log ('Succeeded connected to: ' + uristring);
-  }
-});
 
 
 
 var Schema = mongoose.Schema;
 
-
+// The blue print for the table
 var userDataSchema = new Schema({
   name: {type: String, required: true},
   color: String,
@@ -33,6 +17,7 @@ var userDataSchema = new Schema({
   birthday: Date
 }, {collection: 'user-data'});
 
+// The table itself using the blueprint model above
 var UserData = mongoose.model('UserData', userDataSchema);
 
 /* GET home page. */
